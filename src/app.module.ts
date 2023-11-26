@@ -1,6 +1,10 @@
 import { Module } from '@nestjs/common';
 import {TypeOrmModule} from '@nestjs/typeorm';
-import { UserModule } from './Login/User.module';
+import { UserModule } from './Modulos/user/User.module';
+import { TemperaturaModule } from './Modulos/temperatura/temperatura.module';
+import { HumedadModule } from './Modulos/humedad/humedad.module';
+import { HuevoModule } from './Modulos/huevo/huevo.module';
+import { IncubadoraModule } from './Modulos/incubadora/incubadora.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -13,7 +17,7 @@ import { UserModule } from './Login/User.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true
 
-  }), UserModule],
+  }), UserModule,HuevoModule,HumedadModule,TemperaturaModule,IncubadoraModule],
   controllers: [],
   providers: [],
 })

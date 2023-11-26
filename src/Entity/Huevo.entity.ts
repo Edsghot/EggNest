@@ -3,9 +3,9 @@ import {Entity,Column,PrimaryGeneratedColumn}  from 'typeorm'
 @Entity({name: 'Huevo'})
 export class Huevo{
     @PrimaryGeneratedColumn()
-    Id: number;
+    IdHuevo: number;
     @Column()
-    IdLogin: number;
+    IdUser: number;
     @Column()
     Tipo: string;
     @Column()
@@ -16,4 +16,6 @@ export class Huevo{
     FechaFin: Date;
     @Column()   
     CantidadDias: number;
+    @Column()
+    ImagenHUevo: string;
 }

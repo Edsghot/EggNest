@@ -1,4 +1,4 @@
-export class loginUsers{
+export class LoginRequest{
     Email: string
     Password: string
 }
