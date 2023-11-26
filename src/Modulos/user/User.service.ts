@@ -3,8 +3,6 @@ import { LoginRequest } from '../../Request/User/Login.request';
 import {User} from '../../Entity/User.entity'
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import {Huevo} from '../../Entity/Huevo.entity'
-import { DatosUserAndHuevo } from 'src/Dto/User/DatosUser.dto';
 
 @Injectable()
 export class UserService {

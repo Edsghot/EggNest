@@ -15,7 +15,11 @@ export class HuevoService {
                 where: { IdUser }
               });
 
-                return existingHuevo;
-
+              if(existingHuevo === null){
+                return { msg: "Usted no cuenta con Huevos Registrados" };
+              }else{
+                return existingHuevo
+              }
+              
         }
 }

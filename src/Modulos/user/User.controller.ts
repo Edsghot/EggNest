@@ -1,8 +1,7 @@
 import { Body, Controller ,Get,Post} from '@nestjs/common';
-import { UserService } from './user.service';
+import { UserService } from './User.service';
 import { LoginRequest } from '../../Request/User/Login.request';
 import { HuevoService } from '../huevo/huevo.service';
-import { User } from 'src/Entity/User.entity';
 
 @Controller('user')
 export class UserController {
