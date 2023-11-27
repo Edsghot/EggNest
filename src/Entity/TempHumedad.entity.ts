@@ -16,7 +16,7 @@ export class Temperatura{
     setDefaultDate() {
     // Verifica si la fecha ya está establecida
     if (!this.fecha) {
-      this.fecha = new Date();
+        this.fecha = new Date();
     }
-  } 
+    } 
 }

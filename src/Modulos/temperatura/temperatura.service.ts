@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { createTemperaturaYhumedad } from '../../Request/TemperaturaYhumedad/createTemperaturaYhumedad.request';
 import { Repository } from 'typeorm';
-import { Temperatura } from 'src/Entity/Temperatura.entity';
+import { Temperatura } from 'src/Entity/TempHumedad.entity';
 
 @Injectable()
 export class TemperaturaService {
