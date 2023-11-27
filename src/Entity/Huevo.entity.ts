@@ -17,5 +17,5 @@ export class Huevo{
     @Column()   
     CantidadDias: number;
     @Column()
-    ImagenHUevo: string;
+    ImagenHuevo: string;
 }

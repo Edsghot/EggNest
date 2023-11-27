@@ -2,12 +2,14 @@ import {Entity,Column,PrimaryGeneratedColumn, PrimaryColumn} from "typeorm";
 
 @Entity({name:'Temperatura'})
 export class Temperatura{
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     IdTemperatura: number;
     @Column()
     IdIncubadora:number;
     @Column()
-    valor: number;
+    valorTemperatura: number;
+    @Column()
+    valorHumedad: number;
     @Column()
     fecha: Date;
 }
