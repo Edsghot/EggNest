@@ -18,4 +18,14 @@ export class TemperaturaService {
         const newUser = this.temperaturaRepository.create(dto);
         return this.temperaturaRepository.save(newUser);
     }
+
+    getTemperaturaActual(){
+        const ultimaTemperatura = this.temperaturaRepository
+      .createQueryBuilder('temperatura')
+      .orderBy('temperatura.fecha', 'DESC')
+      .limit(1)
+      .getOne();
+
+        return ultimaTemperatura;
+    }
 }

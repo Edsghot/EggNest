@@ -14,6 +14,8 @@ export class Huevo{
     FechaInicio: Date;
     @Column()
     FechaFin: Date;
+    @Column()
+    CantidadHuevos: number;
     @Column()   
     CantidadDias: number;
     @Column()

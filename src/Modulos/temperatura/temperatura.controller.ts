@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { TemperaturaService } from './temperatura.service';
 import { createTemperaturaYhumedad } from 'src/Request/TemperaturaYhumedad/createTemperaturaYhumedad.request';
 
@@ -9,5 +9,10 @@ export class TemperaturaController {
     @Post('insert')
     createUser(@Body() newUser: createTemperaturaYhumedad){
         return this.temperaturaService.createUser(newUser);
+    }
+
+    @Get("temperaturaActual")
+    getUsers(){
+        return this.temperaturaService.getTemperaturaActual();
     }
 }
