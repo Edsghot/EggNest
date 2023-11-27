@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { TemperaturaService } from './temperatura.service';
 import { createTemperaturaYhumedad } from 'src/Request/TemperaturaYhumedad/createTemperaturaYhumedad.request';
 
@@ -6,8 +6,8 @@ import { createTemperaturaYhumedad } from 'src/Request/TemperaturaYhumedad/creat
 export class TemperaturaController {
     
     constructor(private temperaturaService: TemperaturaService){}
-    @Post('insert')
-    createUser(@Body() newUser: createTemperaturaYhumedad){
+    @Get('insert')
+    createUser(@Query() newUser: createTemperaturaYhumedad){
         return this.temperaturaService.createUser(newUser);
     }
 
