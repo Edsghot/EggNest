@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Temperatura } from 'src/Entity/Temperatura.entity';
-import { createTemperaturaYhumedad } from 'src/Request/TemperaturaYhumedad/createTemperaturaYhumedad.request';
+import { Temperatura } from '../../Entity/Temperatura.entity';
+import { createTemperaturaYhumedad } from '../../Request/TemperaturaYhumedad/createTemperaturaYhumedad.request';
 import { Repository } from 'typeorm';
 
 @Injectable()
