@@ -39,8 +39,9 @@ export class UserController {
 
       const huevo = await this.huevoUser.createHuevo(newUser,user.IdUser);
       
+      
 
-      return {msg: "Se registro correctamente"}
+      return {msg: "Se registro correctamente",dataUser: user,dataHuevo: huevo}
     }
 
     @Get()

@@ -37,7 +37,12 @@ export class HuevoService {
           newHuevo.CantidadHuevos = cantidadHuevo;
           newHuevo.CantidadDias = cantidadDias;
 
-          return this.huevoRepository.create(newHuevo);
+          try{
+            return this.huevoRepository.create(newHuevo);
 
+          }catch(e){
+            {msg: "error "+e}
+          }
+          
         }
 }
