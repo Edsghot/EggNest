@@ -11,6 +11,25 @@ export class IncubadoraService {
     constructor(@InjectRepository(Incubadora) private incubadoraRepository: Repository<Incubadora>
         ){}
 
+        async updateVentilador(valor:string,idIncubadora: number ){
+            const existing = await this.incubadoraRepository.findOne({
+                where: { IdIncubadora: idIncubadora },
+            });
+
+            existing.Ventilador1 = valor;
+            
+            return await this.incubadoraRepository.save(existing);  
+        }
+        
+        async updateFoco(valor:string,idIncubadora: number ){
+            const existing = await this.incubadoraRepository.findOne({
+                where: { IdIncubadora: idIncubadora },
+            });
+
+            existing.foco = valor;
+            
+            return await this.incubadoraRepository.save(existing);  
+        }
 
     async updateIncubadora(incubadora: createTemperaturaYhumedad){
         const { ventilador1, foco, idIncubadora } = incubadora;
@@ -38,6 +57,15 @@ export class IncubadoraService {
         
         var existingIncubadora = this.incubadoraRepository.findOne({
             where: { IdIncubadora: id }
+        });
+
+        return existingIncubadora;    
+    }
+
+    async getByIdIncubadora(idUser: number){
+        
+        var existingIncubadora = await this.incubadoraRepository.findOne({
+            where: { IdUser: idUser }
         });
 
         return existingIncubadora;    
