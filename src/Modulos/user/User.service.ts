@@ -3,6 +3,7 @@ import { LoginRequest } from '../../Request/User/Login.request';
 import {User} from '../../Entity/User.entity'
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { createUserHuevo } from 'src/Request/User/createUserHuevo.request';
 
 @Injectable()
 export class UserService {
@@ -20,8 +21,21 @@ export class UserService {
           return existingUser;
        
       }
+      async createUser(user: createUserHuevo) {
+        const { Nombre,Email, Password } = user;
+        
+        const existingUser = await this.userRepository.findOne({
+          where: { Email,Nombre }
+        });
+        const newUser = new User();
+        newUser.Nombre = Nombre;
+        newUser.Email = Email;
+        newUser.Password = Password;
+        newUser.tipo ="usuario";
 
-      getAllUser(){
+        return this.userRepository.create(newUser);
+      }
+    getAllUser(){
         return this.userRepository.find();
     }
 

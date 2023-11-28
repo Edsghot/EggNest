@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Huevo } from 'src/Entity/Huevo.entity';
+import { createUserHuevo } from 'src/Request/User/createUserHuevo.request';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -21,5 +22,22 @@ export class HuevoService {
                 return existingHuevo
               }
               
+        }
+
+        async createHuevo(huevo: createUserHuevo,idUser:number){
+          const {fechaInicio,cantidadDias,cantidadHuevo} = huevo;
+
+          const newHuevo = new Huevo();
+          newHuevo.Tipo = "Gallina";
+          newHuevo.Nombre = ".....";
+          newHuevo.ImagenHuevo = null;
+          newHuevo.IdUser = idUser;
+          newHuevo.FechaInicio = fechaInicio;
+          newHuevo.FechaFin = null;
+          newHuevo.CantidadHuevos = cantidadHuevo;
+          newHuevo.CantidadDias = cantidadDias;
+
+          return this.huevoRepository.create(newHuevo);
+
         }
 }

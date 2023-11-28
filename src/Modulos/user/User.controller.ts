@@ -2,6 +2,7 @@ import { Body, Controller ,Get,Post} from '@nestjs/common';
 import { UserService } from './User.service';
 import { LoginRequest } from '../../Request/User/Login.request';
 import { HuevoService } from '../huevo/huevo.service';
+import { createUserHuevo } from 'src/Request/User/createUserHuevo.request';
 
 @Controller('user')
 export class UserController {
@@ -25,7 +26,21 @@ export class UserController {
         return {msg: "Revise sus credenciales"}
       }
       
-      return
+    }
+
+    @Post('insert') 
+    async InsertUser(@Body() newUser: createUserHuevo) {
+      
+      const user = await this.userService.createUser(newUser);
+
+      if(user == null) {
+        return {msg: "Error al registrar usuario"}
+      }
+
+      const huevo = await this.huevoUser.createHuevo(newUser,user.IdUser);
+      
+
+      return {msg: "Se registro correctamente"}
     }
 
     @Get()
