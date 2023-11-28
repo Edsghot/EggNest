@@ -7,9 +7,7 @@ export class Incubadora{
     @Column()
     IdUser: number;
     @Column()
-    Ventilador1: boolean;
+    Ventilador1: string;
     @Column()
-    Ventilador2: boolean;
-    @Column()
-    foco: boolean
+    foco: string
 }
