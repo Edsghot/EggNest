@@ -70,4 +70,13 @@ export class IncubadoraService {
 
         return existingIncubadora;    
     }
+
+    async getArduino(idIncubadora:number){
+        
+        var existingIncubadora = await this.incubadoraRepository.findOne({
+            where: { IdIncubadora: idIncubadora }
+        });
+
+        return existingIncubadora;    
+    }
 }

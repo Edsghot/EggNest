@@ -21,4 +21,11 @@ export class IncubadoraController {
         return await this.incubadoraService.getByIdIncubadora(idUser);
     }
 
+    
+    @Get('getArduino')
+    async GetArduino(@Query()idIncubadora: number){
+        const data = await this.incubadoraService.getArduino(idIncubadora);
+        
+        return {ventilador: ">"+data.Ventilador1,"foco": ">"+data.foco}
+    }
 }

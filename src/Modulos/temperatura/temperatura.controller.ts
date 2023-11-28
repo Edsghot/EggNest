@@ -13,29 +13,13 @@ export class TemperaturaController {
             return {msg: "error no se esta enviando datos"}
         }
         else{
-            const data = await this.incubadoraService.getUltimo(newData.idIncubadora);
             await this.incubadoraService.updateIncubadora(newData)
             this.temperaturaService.createUser(newData);
-            
-            var venti1;
-            var foco;
-
-            if(data.Ventilador1 ==="HIGH"){
-                venti1 = 1;
-            }else{
-                venti1 = 0;
-            }
-
-            if(data.foco === "HIGH"){
-                foco = 1;
-            }else{
-                foco = 0;
-            }
-
-
-            return {ventilador1: ">"+venti1,foco: ">"+foco }
+        
+            return {mdg: "ok" }
         }
     }
+
 
     @Get("temperaturaActual")
     getTemperatura(){
