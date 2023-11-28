@@ -23,10 +23,7 @@ export class UserService {
       }
       async createUser(user: createUserHuevo) {
         const { Nombre,Email, Password } = user;
-        
-        const existingUser = await this.userRepository.findOne({
-          where: { Email,Nombre }
-        });
+
         const newUser = new User();
         newUser.Nombre = Nombre;
         newUser.Email = Email;
