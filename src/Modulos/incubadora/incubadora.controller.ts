@@ -16,7 +16,7 @@ export class IncubadoraController {
         return await this.incubadoraService.updateFoco(data.valor,data.idIncubadora);
     }
 
-    @Post('actualizarAutomatico')
+    @Get('actualizarAutomatico')
     async PostAutomatico(@Query()idIncubadora:number ){
         return await this.incubadoraService.updateAutomatico(idIncubadora);
     }
