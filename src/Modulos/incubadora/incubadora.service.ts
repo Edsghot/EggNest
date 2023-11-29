@@ -31,6 +31,16 @@ export class IncubadoraService {
             return await this.incubadoraRepository.save(existing);  
         }
 
+        async updateAutomatico(idIncubadora: number ){
+            const existing = await this.incubadoraRepository.findOne({
+                where: { IdIncubadora: idIncubadora },
+            });
+
+            existing.foco = "2";
+            existing.Ventilador1 = "2";
+            
+            return await this.incubadoraRepository.save(existing);  
+        }
     
      getUltimo(id: number){
         
