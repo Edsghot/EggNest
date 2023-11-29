@@ -31,28 +31,7 @@ export class IncubadoraService {
             return await this.incubadoraRepository.save(existing);  
         }
 
-    async updateIncubadora(incubadora: createTemperaturaYhumedad){
-        const { ventilador1, foco, idIncubadora } = incubadora;
-
-        var existingIncubadora = await this.incubadoraRepository.findOne({
-            where: { IdIncubadora: idIncubadora }
-        });
-
-        var antigua = existingIncubadora;
     
-        if (existingIncubadora) {
-    
-            existingIncubadora.Ventilador1 = ventilador1;
-            existingIncubadora.foco = foco;
-    
-            await this.incubadoraRepository.save(existingIncubadora);
-
-            console.log(antigua);
-            return antigua;
-        } else {
-            return {msg: "Incubadora not found for id: " + idIncubadora}
-        }
-    }
      getUltimo(id: number){
         
         var existingIncubadora = this.incubadoraRepository.findOne({
@@ -69,6 +48,18 @@ export class IncubadoraService {
         });
 
         return existingIncubadora;    
+    }
+
+    async getByEstadosVentiladorFoco(idIncubadora: number){
+        
+        var existingIncubadora = await this.incubadoraRepository.findOne({
+            where: { IdIncubadora: idIncubadora }
+        });
+
+        return {
+            ventilador: ">"+existingIncubadora.Ventilador1,
+            foco: ">"+existingIncubadora.foco
+        };    
     }
 
     async getArduino(idIncubadora:number){

@@ -7,19 +7,19 @@ import { IncubadoraService } from '../incubadora/incubadora.service';
 export class TemperaturaController {
     
     constructor(private temperaturaService: TemperaturaService, private incubadoraService: IncubadoraService){}
+    
     @Get('insert')
-    async createUser(@Query() newData: createTemperaturaYhumedad){
+    async createTemperatura(@Query() newData: createTemperaturaYhumedad){
         if(newData== null){
             return {msg: "error no se esta enviando datos"}
         }
         else{
-            await this.incubadoraService.updateIncubadora(newData)
-            this.temperaturaService.createUser(newData);
-        
-            return {mdg: "ok" }
+            const data = await this.incubadoraService.getByEstadosVentiladorFoco(newData.idIncubadora); 
+            await this.temperaturaService.creatTemperatura(newData); 
+
+            return data;
         }
     }
-
 
     @Get("temperaturaActual")
     getTemperatura(){

@@ -8,15 +8,15 @@ import { Temperatura } from 'src/Entity/TempHumedad.entity';
 export class TemperaturaService {
     constructor(@InjectRepository(Temperatura) private temperaturaRepository: Repository<Temperatura>){}
 
-    createUser(newTemperatura: createTemperaturaYhumedad){
+    creatTemperatura(newTemperatura: createTemperaturaYhumedad){
         var dto = new Temperatura();
         const {valorTemperatura,valorHumedad} = newTemperatura;
         dto.IdIncubadora = 1;
         dto.valorTemperatura = valorTemperatura;
         dto.valorHumedad = valorHumedad;
 
-        const newUser = this.temperaturaRepository.create(dto);
-        return this.temperaturaRepository.save(newUser);
+        const newTemperatur = this.temperaturaRepository.create(dto);
+        return this.temperaturaRepository.save(newTemperatur);
     }
 
     getTemperaturaActual(){
