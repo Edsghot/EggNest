@@ -30,19 +30,16 @@ export class HuevoService {
           const newHuevo = new Huevo();
           newHuevo.Tipo = "Gallina";
           newHuevo.Nombre = ".....";
-          newHuevo.ImagenHuevo = null;
+          newHuevo.ImagenHuevo = "null";
           newHuevo.IdUser = idUser;
           newHuevo.FechaInicio = fechaInicio;
-          newHuevo.FechaFin = null;
+          newHuevo.FechaFin = new Date();
           newHuevo.CantidadHuevos = cantidadHuevo;
           newHuevo.CantidadDias = cantidadDias;
-
-          try{
-            return this.huevoRepository.create(newHuevo);
-
-          }catch(e){
-            {msg: "error "+e}
-          }
+          
+          const nuevo = this.huevoRepository.create(newHuevo);
+          await this.huevoRepository.save(nuevo);
+           return nuevo;
           
         }
 }

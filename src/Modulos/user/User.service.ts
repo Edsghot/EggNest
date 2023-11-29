@@ -21,17 +21,20 @@ export class UserService {
           return existingUser;
        
       }
-      async createUser(user: createUserHuevo) {
-        const { Nombre,Email, Password } = user;
-
-        const newUser = new User();
-        newUser.Nombre = Nombre;
-        newUser.Email = Email;
-        newUser.Password = Password;
-        newUser.tipo ="usuario";
-
-        return this.userRepository.create(newUser);
-      }
+     createUser(user: createUserHuevo) {
+            const { Nombre, Email, Password } = user;
+    
+            const newUser = new User();
+            newUser.Nombre = Nombre;
+            newUser.Email = Email;
+            newUser.Password = Password;
+            newUser.tipo = "usuario";
+    
+            const nuevo = this.userRepository.create(newUser);
+            this.userRepository.save(nuevo);
+            return nuevo;
+    }
+    
     getAllUser(){
         return this.userRepository.find();
     }

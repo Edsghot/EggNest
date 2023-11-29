@@ -31,17 +31,11 @@ export class UserController {
     @Post('insert') 
     async InsertUser(@Body() newUser: createUserHuevo) {
       
-      const user = await this.userService.createUser(newUser);
+      const user = this.userService.createUser(newUser);
 
-      if(user == null) {
-        return {msg: "Error al registrar usuario"}
-      }
+      const huevo =await this.huevoUser.createHuevo(newUser,user.IdUser);
 
-      const huevo = await this.huevoUser.createHuevo(newUser,user.IdUser);
-      
-      
-
-      return {msg: "Se registro correctamente",dataUser: user,dataHuevo: huevo}
+      return {msg: "Se registro correctamente",dataUser: user, huevo: huevo}
     }
 
     @Get()
