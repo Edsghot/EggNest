@@ -21,7 +21,7 @@ export class UserService {
           return existingUser;
        
       }
-     createUser(user: createUserHuevo) {
+     async createUser(user: createUserHuevo) {
             const { Nombre, Email, Password } = user;
     
             const newUser = new User();
@@ -31,7 +31,7 @@ export class UserService {
             newUser.tipo = "usuario";
     
             const nuevo = this.userRepository.create(newUser);
-            this.userRepository.save(nuevo);
+            await this.userRepository.save(nuevo);
             return nuevo;
     }
     

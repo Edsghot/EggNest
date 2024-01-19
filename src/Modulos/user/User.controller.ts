@@ -31,9 +31,9 @@ export class UserController {
     @Post('insert') 
     async InsertUser(@Body() newUser: createUserHuevo) {
       
-      const user = this.userService.createUser(newUser);
+      const user = await this.userService.createUser(newUser);
 
-      const huevo =await this.huevoUser.createHuevo(newUser,user.IdUser);
+      const huevo = await this.huevoUser.createHuevo(newUser,user.IdUser);
 
       return {msg: "Se registro correctamente",dataUser: user, huevo: huevo}
     }

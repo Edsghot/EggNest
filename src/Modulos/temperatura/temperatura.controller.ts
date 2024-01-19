@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { TemperaturaService } from './temperatura.service';
 import { createTemperaturaYhumedad } from 'src/Request/TemperaturaYhumedad/createTemperaturaYhumedad.request';
 import { IncubadoraService } from '../incubadora/incubadora.service';
@@ -24,5 +24,15 @@ export class TemperaturaController {
     @Get("temperaturaActual")
     getTemperatura(){
         return this.temperaturaService.getTemperaturaActual();
+    }
+
+    @Get("reporteTemperatura/:cantidad")
+    async getReporteTemperaturas(@Param('cantidad') cantidad: number) {
+      return await this.temperaturaService.getReporteTemperatura(cantidad);
+    }
+
+    @Get("reporteHumedad/:cantidad")
+    async getReporteHumedad(@Param('cantidad') cantidad: number) {
+      return await this.temperaturaService.getReporteHumedad(cantidad);
     }
 }
